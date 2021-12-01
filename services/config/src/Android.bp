@@ -1,6 +1,5 @@
-cc_library_shared {
-    name: "libdisplayconfig.system.qti",
-    system_ext_specific: true,
+cc_defaults {
+    name: "displayconfig_qti_defaults",
     cflags: [
         "-Wno-sign-conversion",
         "-Wno-unused-parameter",
@@ -20,5 +19,17 @@ cc_library_shared {
         "device_interface.cpp",
     ],
     export_header_lib_headers: ["display_intf_headers"],
+}
+
+cc_library_shared {
+    name: "libdisplayconfig.system.qti",
+    defaults: [ "displayconfig_qti_defaults"],
+    system_ext_specific: true,
+}
+
+cc_library_shared {
+    name: "libdisplayconfig.qti",
+    defaults: [ "displayconfig_qti_defaults"],
+    vendor: true,
 }
 
